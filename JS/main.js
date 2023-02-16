@@ -1,9 +1,6 @@
-//----------------------------------------------------------------------------------------
 //PROYECTO CON DOM:
 
 let cancionesDiv = document.getElementById("canciones");
-// let verCatalogoBtn = document.getElementById("verCatalogo")
-// let ocultarCatalogoBtn = document.getElementById("ocultarCatalogo")
 let guardarCancionBtn = document.getElementById("guardarCancionBtn");
 let inputBuscador = document.querySelector("#buscador");
 let coincidencia = document.getElementById("coincidencia");
@@ -20,15 +17,10 @@ if (localStorage.getItem("carrito")) {
   localStorage.setItem("carrito", productosEnCarrito);
 }
 
-//OPERADOR OR
-// console.log(JSON.parse(localStorage.getItem("carrito")))
-// let productosEnCarrito = JSON.parse(localStorage.getItem("carrito")) || []
-// console.log(productosEnCarrito)
-
 //FUNCTIONS PROYECTO DOM
 //imprimiendo los objetos en el DOM
 function verCatalogo(array) {
-  //antes que se vuelva a imprimir, resear el div
+  //antes que se vuelva a imprimir, se resetea el div
   cancionesDiv.innerHTML = "";
 
   for (let cancion of array) {
@@ -111,11 +103,7 @@ function cargarCancion(array) {
   }).showToast();
 }
 
-function buscarInfo(buscado, array) {
-  //condición compuesta || &&
-  //coincidencia total, ej:
-  // libro.autor.toLowerCase() == buscado.toLowerCase() || libro.titulo.toLowerCase() == buscado.toLowerCase()
-  // quiero una coincidencia parcial: método includes
+function buscarInfo(buscado, array) { 
   let busquedaArray = array.filter(
     (cancion) =>
       cancion.nombreCancion.toLowerCase().includes(buscado.toLowerCase()) ||
@@ -148,7 +136,7 @@ function cargarProductosCarrito(array) {
     document
       .getElementById(`botonEliminar${productoCarrito.id}`)
       .addEventListener("click", () => {
-        // console.log("btn eliminar funciona")
+        
         //borrar del DOM
         let cardProducto = document.getElementById(
           `productoCarrito${productoCarrito.id}`
